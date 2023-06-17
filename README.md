@@ -2,6 +2,8 @@
 
 CompGraph is a Python library for creating and working with computational graphs. It provides a flexible framework for defining and evaluating mathematical expressions, enabling efficient computations with automatic differentiation.
 
+---
+
 # Features
 
 - **Computational Graph**: Build and manipulate a computational graph representing mathematical expressions.
@@ -11,6 +13,8 @@ CompGraph is a Python library for creating and working with computational graphs
 - **Power and Negative Operations**: Handle exponentiation and negation of expressions.
 - **Special Functions**: Supports log, sigmoid, softmax and reduce_sum(with support for more functions coming soon).
 - **Optimizers**: Supports the Stochastic Gradient Descent(SGD) optimizer(with support for more optimizers coming soon).
+
+---
 
 # Installation
 
@@ -23,6 +27,8 @@ git clone https: // github.com / mkpro118 / ComputationalGraph.git
 ```
 
 You can add ComputationalGraph to the `PYTHONPATH` environment variable to easily import it like any other python module
+
+---
 
 # Usage
 
@@ -54,14 +60,14 @@ X = cg.PlaceHolder(name='X')
 y = cg.PlaceHolder(name='y')
 
 # Build a hidden layer
-W_hidden = cg.Variable(np.random.randn(2, 2), name='W_h')
+w_hidden = cg.Variable(np.random.randn(2, 2), name='w_h')
 b_hidden = cg.Variable(np.random.randn(2), name='b_h')
-p_hidden = cg.sigmoid(X @ W_hidden + b_hidden, name='p_h')
+p_hidden = cg.sigmoid(X @ w_hidden + b_hidden, name='p_h')
 
 # Build the output layer
-W_output = cg.Variable(np.random.randn(2, 2), name='W_o')
+w_output = cg.Variable(np.random.randn(2, 2), name='w_o')
 b_output = cg.Variable(np.random.randn(2), name='b_o')
-p_output = cg.softmax(p_hidden @ W_output + b_output, name='p_o')
+p_output = cg.softmax(p_hidden @ w_output + b_output, name='p_o')
 
 # Build cross-entropy loss
 loss = -cg.reduce_sum(cg.reduce_sum(y * cg.log(p_output), axis=1))
@@ -76,7 +82,6 @@ feed_dict = {
     y:
         [[1, 0]] * len(blue_points)
         + [[0, 1]] * len(red_points)
-
 }
 
 session = cg.Session()
@@ -92,17 +97,20 @@ for step in range(1, iterations + 1):
     session.run(minimization_op, feed_dict)
 ```
 ### The Data and the Classifier's decision boundary
-![Classifier](.\classifier.png)
+![Classifier](classifier.png)
 
 ### The Computational Graph
-![Computational Graph](.\computational_graph.png)
+![Computational Graph](computational_graph.png)
 
 ### Loss vs. Iterations
-![Loss vs. Iterations](.\loss_v_iterations.png)
+![Loss vs. Iterations](loss_v_iterations.png)
 
+---
 
 # Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request on the GitHub repository.
+
+---
 
 # License
 This project is licensed under the MIT License.
