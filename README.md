@@ -47,7 +47,7 @@ z = x * y + 5
 print(z)  # Output: 11.0
 ```
 
-[example.py](.\compgraph\example.py) has an example of a basic classifier built using a more complex computational graph and automatic differentiation. Here's a shorter version of the same
+[example.py](compgraph/example.py) has an example of a basic classifier built using a more complex computational graph and automatic differentiation. Here's a shorter version of the same
 
 ```python
 import compgraph as cg
