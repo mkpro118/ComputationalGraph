@@ -4,6 +4,7 @@ import numpy as np
 
 import compgraph as cg
 
+np.random.seed(118)
 
 fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=(10, 6))
 
@@ -56,11 +57,14 @@ feed_dict = {
 
 session = cg.Session()
 
-# Perform 1000 gradient descent steps
-for step in range(1000):
-    loss_value = session.run(loss, feed_dict)
-    if step % 50 == 0:
-        print("Step:", step, " Loss:", loss_value)
+iterations = 1000
+losses = np.zeros((iterations,))
+
+# Perform the gradient descent steps
+for step in range(1, iterations + 1):
+    losses[step - 1] = session.run(loss, feed_dict)
+    if step % 100 == 0:
+        print(f'Step: {step} Loss: {losses[step-1]}')
     session.run(minimization_op, feed_dict)
 
 # Visualize classification boundary
@@ -84,6 +88,11 @@ for x, y, c in pred_classes:
         xs_p.append(x)
         ys_p.append(y)
 ax2.plot(xs_p, ys_p, 'r.', xs_n, ys_n, 'b.')
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10, 6))
+ax.set_xlabel('Iterations')
+ax.set_ylabel('Cross Entropy Loss')
+ax.plot(np.arange(1, iterations + 1), losses, color='lightblue')
 
 cg.ComputationalGraph._default_graph.visualize()
 
