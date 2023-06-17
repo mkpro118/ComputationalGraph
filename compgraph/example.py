@@ -30,14 +30,14 @@ X = cg.PlaceHolder(name='X')
 y = cg.PlaceHolder(name='y')
 
 # Build a hidden layer
-W_hidden = cg.Variable(np.random.randn(2, 2), name='W_h')
+w_hidden = cg.Variable(np.random.randn(2, 2), name='w_h')
 b_hidden = cg.Variable(np.random.randn(2), name='b_h')
-p_hidden = cg.sigmoid(X @ W_hidden + b_hidden, name='p_h')
+p_hidden = cg.sigmoid(X @ w_hidden + b_hidden, name='p_h')
 
 # Build the output layer
-W_output = cg.Variable(np.random.randn(2, 2), name='W_o')
+w_output = cg.Variable(np.random.randn(2, 2), name='w_o')
 b_output = cg.Variable(np.random.randn(2), name='b_o')
-p_output = cg.softmax(p_hidden @ W_output + b_output, name='p_o')
+p_output = cg.softmax(p_hidden @ w_output + b_output, name='p_o')
 
 # Build cross-entropy loss
 loss = -cg.reduce_sum(cg.reduce_sum(y * cg.log(p_output), axis=1))
@@ -52,7 +52,6 @@ feed_dict = {
     y:
         [[1, 0]] * len(blue_points)
         + [[0, 1]] * len(red_points)
-
 }
 
 session = cg.Session()
