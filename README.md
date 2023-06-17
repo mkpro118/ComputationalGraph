@@ -2,7 +2,6 @@
 
 CompGraph is a Python library for creating and working with computational graphs. It provides a flexible framework for defining and evaluating mathematical expressions, enabling efficient computations with automatic differentiation.
 
----
 
 # Features
 
@@ -14,7 +13,6 @@ CompGraph is a Python library for creating and working with computational graphs
 - **Special Functions**: Supports log, sigmoid, softmax and reduce_sum(with support for more functions coming soon).
 - **Optimizers**: Supports the Stochastic Gradient Descent(SGD) optimizer(with support for more optimizers coming soon).
 
----
 
 # Installation
 
@@ -28,7 +26,6 @@ git clone https: // github.com / mkpro118 / ComputationalGraph.git
 
 You can add ComputationalGraph to the `PYTHONPATH` environment variable to easily import it like any other python module
 
----
 
 # Usage
 
@@ -105,12 +102,10 @@ for step in range(1, iterations + 1):
 ### Loss vs. Iterations
 ![Loss vs. Iterations](loss_v_iterations.png)
 
----
 
 # Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request on the GitHub repository.
 
----
 
 # License
 This project is licensed under the MIT License.
