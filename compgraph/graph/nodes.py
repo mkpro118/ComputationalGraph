@@ -3,7 +3,7 @@ from typing import Iterable, Union
 from functools import wraps
 import numpy as np
 
-from compgraph.types import Numeric, NumericTypes
+from compgraph.cg_types import Numeric, NumericTypes
 from compgraph.graph.computational_graph import ComputationalGraph
 
 

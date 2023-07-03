@@ -3,7 +3,7 @@ from typing import Iterable
 import numpy as np
 
 from compgraph.graph.nodes import Operation, Node
-from compgraph.types import Numeric
+from compgraph.cg_types import Numeric
 
 
 class log(Operation):
